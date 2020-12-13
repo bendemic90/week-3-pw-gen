@@ -57,5 +57,9 @@ function writePassword() {
     generatePassword()
     function generatePassword() {
       console.log(pwLength);
-}
+      console.log(capital);
+      console.log(specialCharBool);
+      console.log(numbers);
+
+    }
 }
