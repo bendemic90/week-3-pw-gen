@@ -6,15 +6,25 @@
   </head>
   <body>
     <script type="text/javascript">
-
-
       var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-      console.log(alphabet[0]);
-      var alphabetUpper = "abcdefghijklmnopqrstuvwxyz".toUpperCase("").split("");
-      console.log(alphabetUpper[1]);
+      console.log(alphabet);
+      var alphabetUpper = "abcdefghijklmnopqrstuvwxyz"
+        .toUpperCase("")
+        .split("");
+      console.log(alphabetUpper);
       var specialChar = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("");
-      console.log(specialChar[5]);
+      console.log(specialChar);
 
+      ask();
+      function ask() {
+        var answer = prompt("Question..?");
+        if (answer == "netscape") {
+          alert("correct");
+          return;
+        }
+        alert("wrong answer");
+        ask();
+      }
     </script>
   </body>
 </html>
