@@ -70,6 +70,7 @@ function writePassword() {
         password += (charArray[Math.floor(Math.random() * charArray.length)]);
     }
     console.log(password);
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
   }
-  passwordText.value = password;
   }
