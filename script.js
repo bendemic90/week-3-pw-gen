@@ -7,7 +7,7 @@ var alphabetUpper = "abcdefghijklmnopqrstuvwxyz".toUpperCase("").split("");
 console.log(alphabetUpper);
 var specialChar = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".split("");
 console.log(specialChar);
-var numb = [0,1,2,3,4,5,6,7,8,9];
+var numb = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log(numb);
 
 // Write password to the #password input
@@ -31,10 +31,12 @@ function writePassword() {
   } else {
     alert("Must be between 8 and 128 characters");
     console.log(pwLength);
-    writePassword();
+    return writePassword()
   }
   var capital = confirm("Allow capital letters?");
   console.log(capital);
+  var lower = confirm("Allow lower case letters?");
+  console.log(lower);
   var specialCharBool = confirm("Allow special characters? @, %, ^");
   console.log(specialCharBool);
   var numbers = confirm("Allow numbers 0-9?");
@@ -44,30 +46,41 @@ function writePassword() {
   function generatePassword() {
     // log to check functionality of vars
     console.log(pwLength, capital, specialCharBool, numb);
+    
     var charArray = [];
-      if (numbers) for (i = 0; i < numb.length; i++) {
-      charArray.push(numb[i]);
+
+    if (numbers)
+      for (i = 0; i < numb.length; i++) {
+        charArray.push(numb[i]);
       }
-      console.log(charArray);
-      if (specialCharBool) for (j = 0; j < specialChar.length; j++) {
-      charArray.push(specialChar[j])
+    console.log(charArray);
+
+    if (specialCharBool)
+      for (j = 0; j < specialChar.length; j++) {
+        charArray.push(specialChar[j]);
       }
-      console.log(charArray);
-      if (capital) for (k = 0; k < alphabetUpper.length; k++) {
-      charArray.push(alphabetUpper[k]);
+    console.log(charArray);
+
+    if (capital)
+      for (k = 0; k < alphabetUpper.length; k++) {
+        charArray.push(alphabetUpper[k]);
       }
-      console.log(charArray);
-      //always push alphabet
+    console.log(charArray);
+
+    if (lower) 
       for (m = 0; m < alphabet.length; m++) {
-        charArray.push(alphabet[m]);
-      }
-      console.log(charArray);
-
-
-
+      charArray.push(alphabet[m]);
+    }
+    console.log(charArray);
+    // checks if no modifiers are selected, if so returns to writePassword
+    if (!lower && !capital && !specialCharBool && !numbers) {
+      alert("No conditions met, starting again.");
+      return writePassword();
+    }
+    // password fill
     var password = "";
-      for (n = 0; n < parseInt(pwLength); n++) {
-        password += (charArray[Math.floor(Math.random() * charArray.length)]);
+    for (n = 0; n < parseInt(pwLength); n++) {
+      password += charArray[Math.floor(Math.random() * charArray.length)];
     }
     console.log(password);
     var passwordText = document.querySelector("#password");
