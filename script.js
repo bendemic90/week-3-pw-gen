@@ -43,7 +43,7 @@ function writePassword() {
   generatePassword();
   function generatePassword() {
     // log to check functionality of vars
-    //console.log(pwLength, capital, specialCharBool, numb);
+    console.log(pwLength, capital, specialCharBool, numb);
     var charArray = [];
       if (numbers) for (i = 0; i < numb.length; i++) {
       charArray.push(numb[i]);
@@ -73,4 +73,4 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
   }
-  }
+}
