@@ -30,7 +30,7 @@ function writePassword() {
     console.log(pwLength);
   } else {
     alert("Must be between 8 and 128 characters");
-    console.log(pwLength);
+    console.log(pwLength + " outside acceptable parameters.");
     return writePassword()
   }
   var capital = confirm("Allow capital letters?");
