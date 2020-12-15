@@ -6,6 +6,8 @@ Upon completion pushes a randomized password satisfying the conditions laid out 
 * Generate random password to a length of your choosing
 * You may choose to include uppercase, special characters and numbers. Default is lowercase.
 * Drops output to main window so user can select and paste if required.
+* Console logs to check functionality top-down.
+* Restarts if no conditions are true after choosing length.
 
 
 ## Reasoning

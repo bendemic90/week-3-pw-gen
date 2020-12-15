@@ -19,8 +19,9 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+// calls back to when pwLength false
 function writePassword() {
-  // wrapping charLength prompt in function to call back to when false
+  
   var pwLength = prompt(
     "How many characters, between 8 and 128, will your password have?"
   );
@@ -33,6 +34,7 @@ function writePassword() {
     console.log(pwLength + " outside acceptable parameters.");
     return writePassword()
   }
+  //confirms for character conditions (numbers, capitals etc) with logging
   var capital = confirm("Allow capital letters?");
   console.log(capital);
   var lower = confirm("Allow lower case letters?");
@@ -47,42 +49,45 @@ function writePassword() {
     // log to check functionality of vars
     console.log(pwLength, capital, specialCharBool, numb);
     
+    //create empty array to fill with arrays declared earlier based on userinput
     var charArray = [];
 
     if (numbers)
       for (i = 0; i < numb.length; i++) {
         charArray.push(numb[i]);
       }
-    console.log(charArray);
+    console.log(charArray); //logs each time to check the array is growing
 
     if (specialCharBool)
       for (j = 0; j < specialChar.length; j++) {
         charArray.push(specialChar[j]);
       }
-    console.log(charArray);
+    console.log(charArray); //logs each time to check the array is growing
 
     if (capital)
       for (k = 0; k < alphabetUpper.length; k++) {
         charArray.push(alphabetUpper[k]);
       }
-    console.log(charArray);
+    console.log(charArray); //logs each time to check the array is growing
 
     if (lower) 
       for (m = 0; m < alphabet.length; m++) {
       charArray.push(alphabet[m]);
     }
-    console.log(charArray);
+    console.log(charArray); //logs each time to check the array is growing
+
     // checks if no modifiers are selected, if so returns to writePassword
     if (!lower && !capital && !specialCharBool && !numbers) {
       alert("No conditions met, starting again.");
       return writePassword();
     }
-    // password fill
+    // password fill, sets password "" AKA empty
     var password = "";
     for (n = 0; n < parseInt(pwLength); n++) {
       password += charArray[Math.floor(Math.random() * charArray.length)];
+      // += concats the formula into password with random selection from charArray = to pwLength
     }
-    console.log(password);
+    console.log(password); //logs pw to check against screen output
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
   }
