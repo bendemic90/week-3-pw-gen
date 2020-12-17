@@ -9,30 +9,26 @@ var specialChar = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".split("");
 console.log(specialChar);
 var numb = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log(numb);
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-}
-
+console.log("checking arrays working");
+//
+//
+//
+//
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 // calls back to when pwLength false
 function writePassword() {
-  
   var pwLength = prompt(
     "How many characters, between 8 and 128, will your password have?"
   );
   var pwLength = parseInt(pwLength);
   console.log("length is " + pwLength);
   if (pwLength >= 8 && pwLength <= 128) {
-    console.log(pwLength);
+    console.log(pwLength + " allowed, proceeding.");
   } else {
     alert("Must be between 8 and 128 characters");
     console.log(pwLength + " outside acceptable parameters.");
-    return writePassword()
+    return writePassword();
   }
   //confirms for character conditions (numbers, capitals etc) with logging
   var capital = confirm("Allow capital letters?");
@@ -48,7 +44,7 @@ function writePassword() {
   function generatePassword() {
     // log to check functionality of vars
     console.log(pwLength, capital, specialCharBool, numb);
-    
+
     //create empty array to fill with arrays declared earlier based on userinput
     var charArray = [];
 
@@ -70,10 +66,10 @@ function writePassword() {
       }
     console.log(charArray); //logs each time to check the array is growing
 
-    if (lower) 
+    if (lower)
       for (m = 0; m < alphabet.length; m++) {
-      charArray.push(alphabet[m]);
-    }
+        charArray.push(alphabet[m]);
+      }
     console.log(charArray); //logs each time to check the array is growing
 
     // checks if no modifiers are selected, if so returns to writePassword
@@ -88,6 +84,7 @@ function writePassword() {
       // += concats the formula into password with random selection from charArray = to pwLength
     }
     console.log(password); //logs pw to check against screen output
+
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
   }
